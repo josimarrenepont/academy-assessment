@@ -1,4 +1,6 @@
-from backend.data.database import alunos_db, avaliacoes_db
+# backend/main.py
+
+from backend.database import alunos_db, avaliacoes_db, salvar_dados
 
 
 def cadastrar_aluno(nome, idade, peso, altura):
@@ -9,6 +11,7 @@ def cadastrar_aluno(nome, idade, peso, altura):
         "altura": altura
     }
     alunos_db.append(aluno)
+    salvar_dados(alunos_db, avaliacoes_db)
 
 def registrar_avaliacao(nome, percentual_gordura, imc):
     avaliacao = {
@@ -17,8 +20,4 @@ def registrar_avaliacao(nome, percentual_gordura, imc):
         "imc": imc
     }
     avaliacoes_db.append(avaliacao)
-
-def mostrar_dados_aluno(nome):
-    dados = [aluno for aluno in alunos_db if aluno["nome"] == nome]
-    avaliacoes = [avaliacao for avaliacao in avaliacoes_db if avaliacao["nome"] == nome]
-    return dados, avaliações
+    salvar_dados(alunos_db, avaliacoes_db)
