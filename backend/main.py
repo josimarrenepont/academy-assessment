@@ -1,7 +1,7 @@
-# backend/main.py
+from backend.database import carregar_dados, salvar_dados
 
-from backend.database import alunos_db, avaliacoes_db, salvar_dados
-
+# Carregar dados iniciais
+alunos_db, avaliacoes_db = carregar_dados()
 
 def cadastrar_aluno(nome, idade, peso, altura):
     aluno = {
