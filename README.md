@@ -13,7 +13,7 @@
 2. **Executar a Interface Gráfica**
    - Navegue para o diretório `frontend` e execute:
      ```bash
-     python interface.py
+     python app.py
      ```
 
 ## Dependências
