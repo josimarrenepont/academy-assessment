@@ -59,6 +59,14 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -156,7 +164,7 @@
         "kind": 2,
         "importPath": "backend.graficos",
         "description": "backend.graficos",
-        "peekOfCode": "def gerar_graficos():\n    # Carregar os dados dos alunos e avaliações\n    alunos_db, avaliacoes_db = carregar_dados()\n    # Exemplo de gráfico de idades\n    idades = [aluno['idade'] for aluno in alunos_db]\n    plt.hist(idades, bins=10, edgecolor='black')\n    plt.title('Distribuição das Idades dos Alunos')\n    plt.xlabel('Idade')\n    plt.ylabel('Número de Alunos')\n    plt.show()",
+        "peekOfCode": "def gerar_graficos():\n    alunos_db, avaliacoes_db = carregar_dados()\n    idades = [aluno['idade'] for aluno in alunos_db]\n    plt.figure(figsize=(10, 6))\n    n, bins, patches = plt.hist(idades, bins=10, color='skyblue', edgecolor='black', alpha=0.7)\n    plt.title('Distribuição das Idades dos Alunos', fontsize=16, fontweight='bold')\n    plt.xlabel('Idade', fontsize=14)\n    plt.ylabel('Número de Alunos', fontsize=14)\n    plt.xticks(fontsize=12)\n    plt.yticks(fontsize=12)",
         "detail": "backend.graficos",
         "documentation": {}
     },
@@ -183,7 +191,7 @@
         "kind": 2,
         "importPath": "backend.relatorios",
         "description": "backend.relatorios",
-        "peekOfCode": "def gerar_relatorio():\n    # Carregar os dados dos alunos e avaliações\n    alunos_db, avaliacoes_db = carregar_dados()\n    # Criar DataFrames a partir dos dados\n    df_alunos = pd.DataFrame(alunos_db)\n    df_avaliacoes = pd.DataFrame(avaliacoes_db)\n    # Salvar os dados em arquivos CSV\n    df_alunos.to_csv('relatorio_alunos.csv', index=False)\n    df_avaliacoes.to_csv('relatorio_avaliacoes.csv', index=False)\n    print(\"Relatórios gerados com sucesso!\")",
+        "peekOfCode": "def gerar_relatorio():\n    alunos_db, avaliacoes_db = carregar_dados()\n    if not alunos_db or not avaliacoes_db:\n        print(\"Erro: Dados não carregados corretamente.\")\n        return\n    df_alunos = pd.DataFrame(alunos_db)\n    df_avaliacoes = pd.DataFrame(avaliacoes_db)\n    timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    df_alunos.to_csv(f'relatorio_alunos_{timestamp}.csv', index=False)\n    df_avaliacoes.to_csv(f'relatorio_avaliacoes_{timestamp}.csv', index=False)",
         "detail": "backend.relatorios",
         "documentation": {}
     },

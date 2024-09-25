@@ -2,7 +2,6 @@ import os
 
 import pandas as pd
 
-# Define o caminho da pasta 'data'
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 
 def carregar_dados():
