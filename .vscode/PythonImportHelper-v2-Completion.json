@@ -1,0 +1,199 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados",
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "isExtraImport": true,
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados",
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "isExtraImport": true,
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "salvar_dados",
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "isExtraImport": true,
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados",
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "isExtraImport": true,
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "tkinter",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "ttk",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "gerar_graficos",
+        "importPath": "backend.graficos",
+        "description": "backend.graficos",
+        "isExtraImport": true,
+        "detail": "backend.graficos",
+        "documentation": {}
+    },
+    {
+        "label": "cadastrar_aluno",
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "isExtraImport": true,
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "registrar_avaliacao",
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "isExtraImport": true,
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "gerar_relatorio",
+        "importPath": "backend.relatorios",
+        "description": "backend.relatorios",
+        "isExtraImport": true,
+        "detail": "backend.relatorios",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados",
+        "kind": 2,
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "peekOfCode": "def carregar_dados():\n    alunos_path = os.path.join(DATA_DIR, 'alunos_db.csv')\n    avaliacoes_path = os.path.join(DATA_DIR, 'avaliacoes_db.csv')\n    if os.path.exists(alunos_path):\n        alunos_db = pd.read_csv(alunos_path, sep=';').to_dict(orient='records')\n    else:\n        alunos_db = []\n    if os.path.exists(avaliacoes_path):\n        avaliacoes_db = pd.read_csv(avaliacoes_path, sep=';').to_dict(orient='records')\n    else:",
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "salvar_dados",
+        "kind": 2,
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "peekOfCode": "def salvar_dados(alunos_db, avaliacoes_db):\n    alunos_path = os.path.join(DATA_DIR, 'alunos_db.csv')\n    avaliacoes_path = os.path.join(DATA_DIR, 'avaliacoes_db.csv')\n    pd.DataFrame(alunos_db).to_csv(alunos_path, index=False, sep=';')\n    pd.DataFrame(avaliacoes_db).to_csv(avaliacoes_path, index=False, sep=';')",
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_DIR",
+        "kind": 5,
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "peekOfCode": "DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')\ndef carregar_dados():\n    alunos_path = os.path.join(DATA_DIR, 'alunos_db.csv')\n    avaliacoes_path = os.path.join(DATA_DIR, 'avaliacoes_db.csv')\n    if os.path.exists(alunos_path):\n        alunos_db = pd.read_csv(alunos_path, sep=';').to_dict(orient='records')\n    else:\n        alunos_db = []\n    if os.path.exists(avaliacoes_path):\n        avaliacoes_db = pd.read_csv(avaliacoes_path, sep=';').to_dict(orient='records')",
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "gerar_graficos",
+        "kind": 2,
+        "importPath": "backend.graficos",
+        "description": "backend.graficos",
+        "peekOfCode": "def gerar_graficos():\n    # Carregar os dados dos alunos e avaliações\n    alunos_db, avaliacoes_db = carregar_dados()\n    # Exemplo de gráfico de idades\n    idades = [aluno['idade'] for aluno in alunos_db]\n    plt.hist(idades, bins=10, edgecolor='black')\n    plt.title('Distribuição das Idades dos Alunos')\n    plt.xlabel('Idade')\n    plt.ylabel('Número de Alunos')\n    plt.show()",
+        "detail": "backend.graficos",
+        "documentation": {}
+    },
+    {
+        "label": "cadastrar_aluno",
+        "kind": 2,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "def cadastrar_aluno(nome, idade, peso, altura):\n    aluno = {\n        \"nome\": nome,\n        \"idade\": idade,\n        \"peso\": peso,\n        \"altura\": altura\n    }\n    alunos_db.append(aluno)\n    salvar_dados(alunos_db, avaliacoes_db)\ndef registrar_avaliacao(nome, percentual_gordura, imc):",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "registrar_avaliacao",
+        "kind": 2,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "def registrar_avaliacao(nome, percentual_gordura, imc):\n    avaliacao = {\n        \"nome\": nome,\n        \"percentual_gordura\": percentual_gordura,\n        \"imc\": imc\n    }\n    avaliacoes_db.append(avaliacao)\n    salvar_dados(alunos_db, avaliacoes_db)",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "gerar_relatorio",
+        "kind": 2,
+        "importPath": "backend.relatorios",
+        "description": "backend.relatorios",
+        "peekOfCode": "def gerar_relatorio():\n    # Carregar os dados dos alunos e avaliações\n    alunos_db, avaliacoes_db = carregar_dados()\n    # Criar DataFrames a partir dos dados\n    df_alunos = pd.DataFrame(alunos_db)\n    df_avaliacoes = pd.DataFrame(avaliacoes_db)\n    # Salvar os dados em arquivos CSV\n    df_alunos.to_csv('relatorio_alunos.csv', index=False)\n    df_avaliacoes.to_csv('relatorio_avaliacoes.csv', index=False)\n    print(\"Relatórios gerados com sucesso!\")",
+        "detail": "backend.relatorios",
+        "documentation": {}
+    },
+    {
+        "label": "Aplicacao",
+        "kind": 6,
+        "importPath": "frontend.app",
+        "description": "frontend.app",
+        "peekOfCode": "class Aplicacao:\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Sistema de Cadastro de Alunos\")\n        self.root.geometry(\"600x400\")\n        # Cadastro de Alunos\n        self.frame_cadastro = ttk.LabelFrame(self.root, text=\"Cadastro de Alunos\", padding=(10, 10))\n        self.frame_cadastro.grid(row=0, column=0, padx=10, pady=10, sticky=\"ew\")\n        ttk.Label(self.frame_cadastro, text=\"Nome:\").grid(row=0, column=0, padx=5, pady=5)\n        self.nome_entry = ttk.Entry(self.frame_cadastro)",
+        "detail": "frontend.app",
+        "documentation": {}
+    }
+]

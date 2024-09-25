@@ -8,6 +8,7 @@ from tkinter import messagebox, ttk
 
 from backend.graficos import gerar_graficos
 from backend.main import cadastrar_aluno, registrar_avaliacao
+from backend.relatorios import gerar_relatorio
 
 
 class Aplicacao:
@@ -58,12 +59,15 @@ class Aplicacao:
         self.registrar_btn = ttk.Button(self.frame_avaliacao, text="Registrar Avaliação", command=self.registrar_avaliacao)
         self.registrar_btn.grid(row=3, column=0, columnspan=2, pady=10)
 
-        # Gráficos
-        self.frame_graficos = ttk.LabelFrame(self.root, text="Gráficos", padding=(10, 10))
+        # Gráficos e Relatórios
+        self.frame_graficos = ttk.LabelFrame(self.root, text="Gráficos e Relatórios", padding=(10, 10))
         self.frame_graficos.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
 
         self.graficos_btn = ttk.Button(self.frame_graficos, text="Gerar Gráficos", command=self.gerar_graficos)
         self.graficos_btn.grid(row=0, column=0, padx=5, pady=5)
+
+        self.gerar_relatorio_btn = ttk.Button(self.frame_graficos, text="Gerar Relatório", command=self.gerar_relatorio)
+        self.gerar_relatorio_btn.grid(row=1, column=0, padx=5, pady=5)
 
     def cadastrar_aluno(self):
         nome = self.nome_entry.get()
@@ -90,6 +94,12 @@ class Aplicacao:
 
     def gerar_graficos(self):
         gerar_graficos()
+        messagebox.showinfo("Sucesso", "Gráfico gerado com sucesso!")
+
+    def gerar_relatorio(self):
+        gerar_relatorio()
+        messagebox.showinfo("Sucesso", "Relatório gerado com sucesso!")
+
 
 if __name__ == "__main__":
     root = tk.Tk()
