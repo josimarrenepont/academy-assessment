@@ -35,14 +35,6 @@
         "documentation": {}
     },
     {
-        "label": "carregar_dados",
-        "importPath": "backend.database",
-        "description": "backend.database",
-        "isExtraImport": true,
-        "detail": "backend.database",
-        "documentation": {}
-    },
-    {
         "label": "salvar_dados",
         "importPath": "backend.database",
         "description": "backend.database",
@@ -160,11 +152,38 @@
         "documentation": {}
     },
     {
+        "label": "carregar_dados",
+        "kind": 2,
+        "importPath": "backend.graficos",
+        "description": "backend.graficos",
+        "peekOfCode": "def carregar_dados():\n    alunos_path = os.path.join(DATA_DIR, 'alunos_db.csv')\n    avaliacoes_path = os.path.join(DATA_DIR, 'avaliacoes_db.csv')\n    if os.path.exists(alunos_path):\n        alunos_db = pd.read_csv(alunos_path, sep=';').to_dict(orient='records')\n    else:\n        alunos_db = []\n    if os.path.exists(avaliacoes_path):\n        avaliacoes_db = pd.read_csv(avaliacoes_path, sep=';').to_dict(orient='records')\n    else:",
+        "detail": "backend.graficos",
+        "documentation": {}
+    },
+    {
+        "label": "salvar_dados",
+        "kind": 2,
+        "importPath": "backend.graficos",
+        "description": "backend.graficos",
+        "peekOfCode": "def salvar_dados(alunos_db, avaliacoes_db):\n    alunos_path = os.path.join(DATA_DIR, 'alunos_db.csv')\n    avaliacoes_path = os.path.join(DATA_DIR, 'avaliacoes_db.csv')\n    pd.DataFrame(alunos_db).to_csv(alunos_path, index=False, sep=';')\n    pd.DataFrame(avaliacoes_db).to_csv(avaliacoes_path, index=False, sep=';')\ndef gerar_graficos():\n    # Carrega os dados dos alunos e avaliações\n    alunos_db, avaliacoes_db = carregar_dados()\n    # Extrai as idades dos alunos\n    idades = [aluno['idade'] for aluno in alunos_db]",
+        "detail": "backend.graficos",
+        "documentation": {}
+    },
+    {
         "label": "gerar_graficos",
         "kind": 2,
         "importPath": "backend.graficos",
         "description": "backend.graficos",
-        "peekOfCode": "def gerar_graficos():\n    alunos_db, avaliacoes_db = carregar_dados()\n    idades = [aluno['idade'] for aluno in alunos_db]\n    plt.figure(figsize=(10, 6))\n    n, bins, patches = plt.hist(idades, bins=10, color='skyblue', edgecolor='black', alpha=0.7)\n    plt.title('Distribuição das Idades dos Alunos', fontsize=16, fontweight='bold')\n    plt.xlabel('Idade', fontsize=14)\n    plt.ylabel('Número de Alunos', fontsize=14)\n    plt.xticks(fontsize=12)\n    plt.yticks(fontsize=12)",
+        "peekOfCode": "def gerar_graficos():\n    # Carrega os dados dos alunos e avaliações\n    alunos_db, avaliacoes_db = carregar_dados()\n    # Extrai as idades dos alunos\n    idades = [aluno['idade'] for aluno in alunos_db]\n    # Cria uma nova figura para o gráfico\n    plt.figure(figsize=(10, 6))\n    # Gera o histograma das idades\n    n, bins, patches = plt.hist(idades, bins=10, color='skyblue', edgecolor='black', alpha=0.7)\n    # Configurações do gráfico",
+        "detail": "backend.graficos",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_DIR",
+        "kind": 5,
+        "importPath": "backend.graficos",
+        "description": "backend.graficos",
+        "peekOfCode": "DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')\ndef carregar_dados():\n    alunos_path = os.path.join(DATA_DIR, 'alunos_db.csv')\n    avaliacoes_path = os.path.join(DATA_DIR, 'avaliacoes_db.csv')\n    if os.path.exists(alunos_path):\n        alunos_db = pd.read_csv(alunos_path, sep=';').to_dict(orient='records')\n    else:\n        alunos_db = []\n    if os.path.exists(avaliacoes_path):\n        avaliacoes_db = pd.read_csv(avaliacoes_path, sep=';').to_dict(orient='records')",
         "detail": "backend.graficos",
         "documentation": {}
     },

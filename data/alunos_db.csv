@@ -1,7 +1,8 @@
-nome;idade;peso;altura
-Joao;28;80.0;1,89
-maria;31;67.0;1,65
-Evandro;35;90.0;1,8
-Anderson;36;97.0;1.79
-Paulo;28;77.0;1.85
-Renata;33;79.0;1.65
+nome;idade;peso;altura;sexo
+Joao;28;80.0;1,89;
+maria;31;67.0;1,65;
+Evandro;35;90.0;1,8;
+Anderson;36;97.0;1.79;
+Paulo;28;77.0;1.85;
+Renata;33;79.0;1.65;
+Fernanda;35;67.0;1.57;

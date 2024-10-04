@@ -2,6 +2,8 @@ import os
 
 import pandas as pd
 
+from .database import carregar_dados
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 
 def carregar_dados():
